@@ -1,18 +1,21 @@
 package mauthietke.cau2;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(List.of(1, 2, 7, 8, 3, 6, 0, 9, 5, 4));
-        // Chọn thuật toán sắp xếp.
-        // Chọn BubbleSort hoặc SelectionSort.
-        SortingStrategy sortingStrategy = new SelectionSort();
-        
-        Context context = new Context(sortingStrategy);
-        context.performSort(list);
-        
-        System.out.println("Sorted List: " + list);
+        int[] array = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+
+        SortContext context = new SortContext();
+
+        // Sử dụng Bubble Sort
+        context.setSortingStrategy(new BubbleSort());
+        context.sortArray(array, true);
+
+        // Sử dụng Selection Sort
+        context.setSortingStrategy(new SelectionSort());
+        context.sortArray(array, false);
+
+        // Để thêm thuật toán sắp xếp mới, chỉ cần tạo một lớp mới thực thi SortingStrategy.
     }
 }
+

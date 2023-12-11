@@ -1,29 +1,20 @@
 package mauthietke.cau2;
 
-import java.util.List;
-
 public class BubbleSort implements SortingStrategy {
     /**
      * Bubble Sort.
      */
     @Override
-    public void sort(List<Integer> list) {
-        System.out.print("Sort using Bubble Sort: ");
-        int n = list.size();
-
+    public void sort(int[] array, boolean ascending) {
+        int n = array.length;
         for (int i = 0; i < n - 1; i++) {
-            boolean swapped = false;
             for (int j = 0; j < n - i - 1; j++) {
-                if (list.get(j) > list.get(j + 1)) {
-                    // swap list[j] and list[j+1]
-                    int tmp = list.get(j);
-                    list.set(j, list.get(j + 1));
-                    list.set(j + 1, tmp);
-                    swapped = true;
+                if (ascending ? array[j] > array[j + 1] : array[j] < array[j + 1]) {
+                    // Swap array[j] and array[j+1]
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
-            }
-            if (!swapped) {
-                break;
             }
         }
     }

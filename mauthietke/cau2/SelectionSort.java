@@ -1,27 +1,21 @@
 package mauthietke.cau2;
 
-import java.util.List;
 
 public class SelectionSort implements SortingStrategy {
     @Override
-    public void sort(List<Integer> list) {
-        System.out.print("Sort using Selection Sort: ");
-        int n = list.size();
-
+    public void sort(int[] array, boolean ascending) {
+        int n = array.length;
         for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
+            int extremeIndex = i;
             for (int j = i + 1; j < n; j++) {
-                if (list.get(j) < list.get(minIndex)) {
-                    minIndex = j;
+                if (ascending ? array[j] < array[extremeIndex] : array[j] > array[extremeIndex]) {
+                    extremeIndex = j;
                 }
             }
-
-            if (minIndex != i) {
-                // Swap list[i] and list[minIndex]
-                int temp = list.get(i);
-                list.set(i, list.get(minIndex));
-                list.set(minIndex, temp);
-            }
+            // Swap array[i] and array[extremeIndex]
+            int temp = array[i];
+            array[i] = array[extremeIndex];
+            array[extremeIndex] = temp;
         }
     }
 }
